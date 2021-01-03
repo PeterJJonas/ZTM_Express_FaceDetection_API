@@ -32,7 +32,7 @@ const database = {
     {
       id: '345',
       hash: '',
-      email: 'ross@typo.com'
+      email: 'rossssss@typo.com'
     }
   ]
 }
@@ -42,12 +42,10 @@ app.get('/', (req, res) => {
 })
 
 app.post('/signin', (req, res) => {
-  bcrypt.compare("valami", '$2a$10$5Ds8NS8qLZrcb6XIMIL5gezTKbMd6g.CYPXrPb0AzAMPV5yTPJ2uO', function(err, res) {
-  });
-  bcrypt.compare("veggies", '$2a$10$5Ds8NS8qLZrcb6XIMIL5gezTKbMd6g.CYPXrPb0AzAMPV5yTPJ2uO', function(err, res) {
-  });
-  if (req.body.email === database.users[0].email && req.body.password === database.users[0].password) {
-    res.json('success');
+  if (req.body.email === database.users[0].email &&
+    req.body.password === database.users[0].password) {
+      console.log(database.users[0]);
+    res.json(database.users[0]);
   } else {
     res.status(400).json('error logging in');
   }
@@ -75,7 +73,7 @@ app.get('/profile/:id', (req, res) => {
     }
   })
   if (!found) {
-    res.status(404).json('no such user');
+    res.status(400).json('no such user');
   }
 })
 
