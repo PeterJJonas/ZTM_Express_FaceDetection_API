@@ -24,11 +24,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {res.send('<h1 style="text-align: center; padding: 10px;">Server is running.<br>OK</h1>');});
+app.get('/', (req, res) => {res.send('<h1 style="text-align: center; padding: 10px;">Server is running.<br>OK</h1>') })
 app.post('/signin', signin.handleSignin(db, bcrypt))
 app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)})
 app.get('/profile/:id', (req, res) =>{profile.handleProfileGet(req, res, db)})
 app.put('/image', (req, res) => {image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)})
 
-app.listen(process.env.PORT || 3000, () => {console.log(`app is runing on port${PORT}`);})
+app.listen(process.env.PORT || 3000, () => {console.log(`app is runing on port${PORT}`) })
